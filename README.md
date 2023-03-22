@@ -14,8 +14,9 @@ S-calculator is a simple arithmetic calculator written in JS with React Native f
 | Color             | Hex                                                                |
 | ----------------- | ------------------------------------------------------------------ |
 | Primary Color | ![#FFFFFF](https://via.placeholder.com/10/FFFFFF?text=+) #FFFFFF |
-| Secondary Color | ![#EFF3FF](https://via.placeholder.com/10/EFF3FF?text=+) #EFF3FF |
-| Light Color | ![#ABC3FF](https://via.placeholder.com/10/ABC3FF?text=+) #ABC3FF |
+| Secondary Color | ![#b3c6f9](https://via.placeholder.com/10/b3c6f9?text=+) #b3c6f9 |
+| Light Color | ![#0F606B](https://via.placeholder.com/10/0F606B?text=+) #0F606B |
+| Gray Color | ![#F6F8FE](https://via.placeholder.com/10/F6F8FE?text=+) #F6F8FE |
 
 
 
