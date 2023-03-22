@@ -6,12 +6,13 @@ import metrics from "./theme/metrics";
 
 export default function OperationButton(props) {
 
-    const { operation } = props;
+    const { operation, setOperation } = props;
     const backgroundColor = (operation == '=') ? colors.LIGHT : colors.SECONDARY;
 
     return (
         <TouchableOpacity
             style={[styles.container, { backgroundColor: backgroundColor }]}
+            onPress={() => setOperation(operation)}
         >
             <Text style={styles.text}>{operation}</Text>
         </TouchableOpacity>

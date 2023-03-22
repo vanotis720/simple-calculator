@@ -6,13 +6,14 @@ import metrics from "./theme/metrics";
 
 export default function NumberButton(props) {
 
-    const { number } = props;
+    const { number, getNumber } = props;
     const backgroundColor = number != null ? colors.GRAY : colors.PRIMARY;
 
     return (
         <TouchableOpacity
             style={[styles.container, { backgroundColor: backgroundColor }]}
             disabled={number == null ? true : false}
+            onPress={() => getNumber(number)}
         >
             <Text style={styles.text}>{number}</Text>
         </TouchableOpacity>
