@@ -1,5 +1,5 @@
 
-# S-calculator
+# SCalculator
 
 S-calculator is a simple arithmetic calculator written in JS with React Native framework for improving my knowledge.
 
@@ -16,4 +16,31 @@ S-calculator is a simple arithmetic calculator written in JS with React Native f
 | Light Color | ![#ABC3FF](https://via.placeholder.com/10/ABC3FF?text=+) #ABC3FF |
 
 ![Logo](https://github.com/vanotis720/simple-calculator/raw/main/assets/logo.png)
+
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/vanotis720/simple-calculator.git
+```
+
+Go to the project directory
+
+```bash
+  cd simple-calculator
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  expo start
+```
 
