@@ -1,18 +1,21 @@
 import React from "react";
 import { StyleSheet } from "react-native";
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import colors from "./theme/colors";
 import metrics from "./theme/metrics";
 
-export default function  NumberButton(props) {
+export default function NumberButton(props) {
 
-    const {number} = props;
+    const { number } = props;
     const backgroundColor = number != null ? colors.GRAY : colors.PRIMARY;
 
     return (
-        <View style={[styles.container, {backgroundColor: backgroundColor}]}>
+        <TouchableOpacity
+            style={[styles.container, { backgroundColor: backgroundColor }]}
+            disabled={number == null ? true : false}
+        >
             <Text style={styles.text}>{number}</Text>
-        </View>
+        </TouchableOpacity>
     );
 }
 

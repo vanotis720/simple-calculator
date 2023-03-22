@@ -1,18 +1,20 @@
 import React from "react";
 import { StyleSheet } from "react-native";
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import colors from "./theme/colors";
 import metrics from "./theme/metrics";
 
 export default function OperationButton(props) {
 
     const { operation } = props;
-    const backgroundColor = (operation == '=') ?  colors.LIGHT : colors.SECONDARY;
+    const backgroundColor = (operation == '=') ? colors.LIGHT : colors.SECONDARY;
 
     return (
-        <View style={[styles.container, {backgroundColor: backgroundColor}]}>
+        <TouchableOpacity
+            style={[styles.container, { backgroundColor: backgroundColor }]}
+        >
             <Text style={styles.text}>{operation}</Text>
-        </View>
+        </TouchableOpacity>
     );
 }
 
