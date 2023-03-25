@@ -8,9 +8,16 @@ import colors from './src/theme/colors';
 export default function App() {
 	const [calcText, setCalcText] = useState('');
 	const [result, setResult] = useState(0);
+	const operations = ['+', '-', '*', '/', '%'];
 
 	const getCalcText = (text) => {
-		setCalcText(calcText + '' + text);
+		if (_checkIfLastCharIsOperation() && operations.includes(text)) {
+			let cleanCalcText = _removeLastCharIfIsOperation();
+			setCalcText(cleanCalcText + '' + text);
+		}
+		else {
+			setCalcText(calcText + '' + text);
+		}
 	}
 
 	const cleanScreen = () => {
@@ -19,19 +26,32 @@ export default function App() {
 	}
 
 	const calculation = () => {
-		let operations = ['+', '-', '*', '/', '%'];
-		let lastChar = calcText.slice(-1);
-
-		if (operations.includes(lastChar)) {
-			setResult(eval(calcText.slice(0, calcText.length - 1)));
-		}
-		else {
-			setResult(eval(calcText));
-		}
+		let cleanCalcText = _removeLastCharIfIsOperation();
+		setResult(eval(cleanCalcText));
+		setCalcText(cleanCalcText);
 	}
 
 	const del = () => {
 		setCalcText(calcText.slice(0, calcText.length - 1));
+	}
+
+	const _getLastCaracter = () => {
+		return calcText.slice(-1);
+	}
+
+	const _checkIfLastCharIsOperation = () => {
+		let last = _getLastCaracter();
+		if (operations.includes(last)) {
+			return true;
+		}
+		return false;
+	}
+
+	const _removeLastCharIfIsOperation = () => {
+		if (_checkIfLastCharIsOperation()) {
+			return calcText.slice(0, calcText.length - 1);
+		}
+		return calcText;
 	}
 
 	return (
@@ -46,7 +66,7 @@ export default function App() {
 			<View style={styles.actionView}>
 				<View style={styles.row}>
 					<OperationButton operation={'C'} getCalcText={cleanScreen} />
-					<OperationButton operation={'DE'} getCalcText={del}/>
+					<OperationButton operation={'DE'} getCalcText={del} />
 					<OperationButton operation={'%'} getCalcText={getCalcText} />
 					<OperationButton operation={'/'} getCalcText={getCalcText} />
 				</View>
