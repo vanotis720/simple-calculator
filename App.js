@@ -6,44 +6,28 @@ import OperationButton from './src/OperationButton';
 import colors from './src/theme/colors';
 
 export default function App() {
-	const [firstNumber, setFirstNumber] = useState(null);
-	const [secondNumber, setSecondNumber] = useState(null);
-	const [operation, setOperation] = useState(null);
+	const [calcText, setCalcText] = useState('');
 	const [result, setResult] = useState(0);
 
-	const showActualOperation = () => {
-		if(firstNumber) {
-			if(operation) {
-				if(secondNumber) {
-					return firstNumber + '' + operation + '' +secondNumber;
-				}
-				else {
-					return firstNumber + '' + operation;
-				}
-			}
-			else {
-				return firstNumber;
-			}
-		}
-	}
-
-	const getNumber = (number) => {
-		if(operation) {
-			setSecondNumber((secondNumber ?? '') + '' + number) ;
-		}
-		else {
-			setFirstNumber((firstNumber ?? '') + '' + number);
-		}
+	const getCalcText = (text) => {
+		setCalcText(calcText + '' + text);
 	}
 
 	const cleanScreen = () => {
-		setOperation(null);
-		setFirstNumber(null);
-		setSecondNumber(null);
+		setCalcText('');
+		setResult(0);
 	}
 
 	const calculation = () => {
-		setResult(eval(firstNumber + operation + secondNumber));
+		let operations = ['+', '-', '*', '/', '%'];
+		let lastChar = calcText.slice(-1);
+
+		if (operations.includes(lastChar)) {
+			setResult(eval(calcText.slice(0, calcText.length - 1)));
+		}
+		else {
+			setResult(eval(calcText));
+		}
 	}
 
 	return (
@@ -51,40 +35,40 @@ export default function App() {
 			<StatusBar style="auto" />
 			<View style={styles.topView}>
 				<Text style={styles.textOperation}>
-					{ showActualOperation() }
+					{calcText}
 				</Text>
-				<Text style={styles.textResult}>={result}</Text>
+				<Text style={styles.textResult}>{result}</Text>
 			</View>
 			<View style={styles.actionView}>
 				<View style={styles.row}>
-					<OperationButton operation={'C'} setOperation={cleanScreen}/>
+					<OperationButton operation={'C'} getCalcText={cleanScreen} />
 					<OperationButton operation={'DE'} />
-					<OperationButton operation={'%'} setOperation={setOperation}/>
-					<OperationButton operation={'/'} setOperation={setOperation}/>
+					<OperationButton operation={'%'} getCalcText={getCalcText} />
+					<OperationButton operation={'/'} getCalcText={getCalcText} />
 				</View>
 				<View style={styles.row}>
-					<NumberButton number={1} getNumber={getNumber} />
-					<NumberButton number={2} getNumber={getNumber} />
-					<NumberButton number={3} getNumber={getNumber} />
-					<OperationButton operation={'*'} setOperation={setOperation} />
+					<NumberButton number={1} getCalcText={getCalcText} />
+					<NumberButton number={2} getCalcText={getCalcText} />
+					<NumberButton number={3} getCalcText={getCalcText} />
+					<OperationButton operation={'*'} getCalcText={getCalcText} />
 				</View>
 				<View style={styles.row}>
-					<NumberButton number={4} getNumber={getNumber} />
-					<NumberButton number={5} getNumber={getNumber} />
-					<NumberButton number={6} getNumber={getNumber} />
-					<OperationButton operation={'-'} setOperation={setOperation}/>
+					<NumberButton number={4} getCalcText={getCalcText} />
+					<NumberButton number={5} getCalcText={getCalcText} />
+					<NumberButton number={6} getCalcText={getCalcText} />
+					<OperationButton operation={'-'} getCalcText={getCalcText} />
 				</View>
 				<View style={styles.row}>
-					<NumberButton number={7} getNumber={getNumber} />
-					<NumberButton number={8} getNumber={getNumber} />
-					<NumberButton number={9} getNumber={getNumber} />
-					<OperationButton operation={'+'} setOperation={setOperation}/>
+					<NumberButton number={7} getCalcText={getCalcText} />
+					<NumberButton number={8} getCalcText={getCalcText} />
+					<NumberButton number={9} getCalcText={getCalcText} />
+					<OperationButton operation={'+'} getCalcText={getCalcText} />
 				</View>
 				<View style={styles.row}>
 					<NumberButton number={null} />
-					<NumberButton number={0} getNumber={getNumber}/>
+					<NumberButton number={0} getCalcText={getCalcText} />
 					<NumberButton number={'.'} />
-					<OperationButton operation={'='} setOperation={calculation}/>
+					<OperationButton operation={'='} getCalcText={calculation} />
 				</View>
 			</View>
 		</View>
