@@ -37,9 +37,13 @@ export default function App() {
 	}
 
 	const cleanScreen = () => {
-		setOperation(null)
-		setFirstNumber(null)
-		setSecondNumber(null)
+		setOperation(null);
+		setFirstNumber(null);
+		setSecondNumber(null);
+	}
+
+	const calculation = () => {
+		setResult(eval(firstNumber + operation + secondNumber));
 	}
 
 	return (
@@ -53,10 +57,10 @@ export default function App() {
 			</View>
 			<View style={styles.actionView}>
 				<View style={styles.row}>
-					<OperationButton operation={'c'} setOperation={cleanScreen}/>
-					<OperationButton operation={'x'} />
-					<OperationButton operation={'%'} />
-					<OperationButton operation={'/'} />
+					<OperationButton operation={'C'} setOperation={cleanScreen}/>
+					<OperationButton operation={'DE'} />
+					<OperationButton operation={'%'} setOperation={setOperation}/>
+					<OperationButton operation={'/'} setOperation={setOperation}/>
 				</View>
 				<View style={styles.row}>
 					<NumberButton number={1} getNumber={getNumber} />
@@ -68,19 +72,19 @@ export default function App() {
 					<NumberButton number={4} getNumber={getNumber} />
 					<NumberButton number={5} getNumber={getNumber} />
 					<NumberButton number={6} getNumber={getNumber} />
-					<OperationButton operation={'-'} />
+					<OperationButton operation={'-'} setOperation={setOperation}/>
 				</View>
 				<View style={styles.row}>
 					<NumberButton number={7} getNumber={getNumber} />
 					<NumberButton number={8} getNumber={getNumber} />
 					<NumberButton number={9} getNumber={getNumber} />
-					<OperationButton operation={'+'} />
+					<OperationButton operation={'+'} setOperation={setOperation}/>
 				</View>
 				<View style={styles.row}>
 					<NumberButton number={null} />
 					<NumberButton number={0} getNumber={getNumber}/>
 					<NumberButton number={'.'} />
-					<OperationButton operation={'='} />
+					<OperationButton operation={'='} setOperation={calculation}/>
 				</View>
 			</View>
 		</View>
