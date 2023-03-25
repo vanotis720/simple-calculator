@@ -8,10 +8,11 @@ export default function OperationButton(props) {
 
     const { operation, getCalcText } = props;
     const backgroundColor = (operation == '=') ? colors.LIGHT : colors.SECONDARY;
+    const width = (operation == '=') ? (metrics.screenWidth / 2) - 30 : (metrics.screenWidth / 4) - 30;
 
     return (
         <TouchableOpacity
-            style={[styles.container, { backgroundColor: backgroundColor }]}
+            style={[styles.container, { backgroundColor: backgroundColor, width: width }]}
             onPress={() => getCalcText(operation)}
         >
             <Text style={styles.text}>{operation}</Text>
@@ -21,8 +22,8 @@ export default function OperationButton(props) {
 
 const styles = StyleSheet.create({
     container: {
-        width: (metrics.screenWidth / 4) - 30,
-        height: (metrics.screenWidth / 4) - 30,
+        // width: (metrics.screenWidth / 4) - 30,
+        height: (metrics.screenWidth / 4) - 35,
         borderRadius: metrics.screenWidth,
         justifyContent: 'center',
         alignItems: 'center'

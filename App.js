@@ -89,9 +89,8 @@ export default function App() {
 					<OperationButton operation={'+'} getCalcText={getCalcText} />
 				</View>
 				<View style={styles.row}>
-					<NumberButton number={null} />
 					<NumberButton number={0} getCalcText={getCalcText} />
-					<NumberButton number={'.'} />
+					<NumberButton number={'.'} getCalcText={getCalcText}/>
 					<OperationButton operation={'='} getCalcText={calculation} />
 				</View>
 			</View>
