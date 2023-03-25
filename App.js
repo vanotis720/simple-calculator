@@ -30,6 +30,10 @@ export default function App() {
 		}
 	}
 
+	const del = () => {
+		setCalcText(calcText.slice(0, calcText.length - 1));
+	}
+
 	return (
 		<View style={styles.container}>
 			<StatusBar style="auto" />
@@ -42,7 +46,7 @@ export default function App() {
 			<View style={styles.actionView}>
 				<View style={styles.row}>
 					<OperationButton operation={'C'} getCalcText={cleanScreen} />
-					<OperationButton operation={'DE'} />
+					<OperationButton operation={'DE'} getCalcText={del}/>
 					<OperationButton operation={'%'} getCalcText={getCalcText} />
 					<OperationButton operation={'/'} getCalcText={getCalcText} />
 				</View>
